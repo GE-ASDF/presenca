@@ -1,0 +1,45 @@
+*, body, html{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background-color: #232323;
+}
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    background-color: #696666;
+    padding:50px;
+    width: max-content;
+    margin:0 auto;
+}
+.contrato label{
+    margin-right: 5px;
+}
+h1{
+    text-align: center;
+}
+
+.contrato{
+    display:flex;
+    flex-direction: row;
+    font-size: 24px;
+    color:#d4d4d4;
+    font-weight: bold;
+}
+.data-hora{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.data-hora input{
+    margin:1px;
+}
