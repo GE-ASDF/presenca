@@ -93,7 +93,7 @@
         <div class="dia-semana m-1">
         </div>
         <div class="computador m-1">
-            <input value="<?php echo $_SERVER["REMOTE_ADDR"] ?>" class="form-control" type="text" readonly name="Computador">
+            <input value="<?php echo gethostbyaddr($_SERVER['REMOTE_ADDR']) ?>" class="form-control" type="text" readonly name="Computador">
         </div>
 
         <button class="btn btn-dark m-1">Registrar</button>
