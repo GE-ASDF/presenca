@@ -34,7 +34,7 @@ include_once "conectar.php";
 ?>
     <?php
         if(isset($_SESSION["message"])){ ?>
-        <p class="alert alert-primary">
+        <p class="alert alert-primary mt-3">
            <?php 
            echo $_SESSION["message"]; 
            unset($_SESSION["message"]);
@@ -49,6 +49,7 @@ include_once "conectar.php";
       <th scope="col">Código do Contrato</th>
       <th scope="col">Nome do aluno</th>
       <th scope="col">Data da presença</th>
+      <th scope="col">Dia da semana</th>
       <th scope="col">Hora da presença</th>
       <th scope="col">Ações</th>
     </tr>
@@ -60,6 +61,7 @@ include_once "conectar.php";
       <td><?php echo $presenca["CodigoContrato"] ?></td>
       <td><?php echo $presenca["NomeAluno"] ?></td>
       <td><?php echo $presenca["DataPresenca"] ?></td>
+      <td><?php echo $presenca["DiaSemana"] ?></td>
       <td><?php echo $presenca["HoraPresenca"] ?></td>
       <td><a class="btn btn-primary" style="background:#600080;" href="editar.php?Codigo=<?php echo $presenca["Codigo"] ?>">Editar</a></td>
     <form class="apagar" action="delete.php" method="GET">
