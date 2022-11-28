@@ -1,18 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dê sua presença</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <div class="container">
+<?php
+    session_start();
+    $title = "Dê a sua presença";
+ include "partials/cabecalho.php" ?>
+ <div class="container-fluid">
+ <div class="alertas">
+        <?php 
+             if(isset($_SESSION["sucesso"])){
+                echo $_SESSION["sucesso"];
+                unset($_SESSION["sucesso"]);
+            }
+            if(isset($_SESSION["naoencontrado"])){
+                echo $_SESSION["naoencontrado"];
+                unset($_SESSION["naoencontrado"]);
+            }
+            if(isset($_SESSION["confirmada"])){
+                echo $_SESSION["confirmada"];
+                unset($_SESSION["confirmada"]);
+            }
+            if(isset($_SESSION["vazio"])){
+                echo $_SESSION["vazio"];
+                unset($_SESSION["vazio"]);
+            }
+        ?>
+    </div>
+       
+</div>
+    <div class="container">    
 
-    <form action="cadastrar.php" method="POST">
+    <form accept-charset="utf-8" action="cadastrar.php" method="POST">
             <h1 class="title text-white">Confirme a sua presença</h1>
         <div class="contrato">
             <label class="form-label" for="CodigoContrato">
@@ -20,9 +35,9 @@
             <input autofocus type="text" class="form-control" name="CodigoContrato">
         </div>
         <h5 class="mt-2 title text-white">Marque seus horários:</h5>
-        <span class="text-white">Ex: se você fica de 08h às 10h, marque os horários de 08:00 e 09:00.</span>
+        <span class="text-white">Ex: se você fica de 08h às 10h, marque os horários de 08h às 09h e 09h às 10h.</span>
         <br>
-        <span class="text-white">Ex: se você fica de 08h às 09h, marque somente o horário de 08:00.</span>
+        <span class="text-white">Ex: se você fica de 08h às 09h, marque somente o horário de 08h.</span>
         <div style="display:grid;grid-template-columns:repeat(4, 1fr);justify-content:center;align-items:center;text-align:center;margin-bottom:10px;margin-top:10px;">
         
             <label for="oito" class="form-check-label text-white fs-5">
@@ -88,6 +103,7 @@
         <div class="data-hora m-1">
             <input class="form-control" type="text" readonly name="DataPresenca">
             <input class="form-control" type="text" readonly name="DiaSemana">
+            <input class="form-control" type="hidden" value="<?php echo $_SERVER["REMOTE_ADDR"] ?>" readonly name="IpComputador">
         </div>
 
         <div class="dia-semana m-1">
@@ -95,11 +111,7 @@
         <div class="computador m-1">
             <input value="<?php echo gethostbyaddr($_SERVER['REMOTE_ADDR']) ?>" class="form-control" type="text" readonly name="Computador">
         </div>
-
         <button class="btn btn-dark m-1">Registrar</button>
     </form>
     </div>
-
-    <script src="./assets/js/main.js"></script>
-</body>
-</html>
+<?php include "./partials/rodape.php" ?>

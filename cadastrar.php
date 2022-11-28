@@ -1,8 +1,9 @@
 <?php
+session_start();
+header("Content-type: text/html; charset=utf-8");
 
 include "marcarPresenca.php";
 include "verifica.php";
-
 
 if($_POST){
     $numeroContrato = isset($_POST["CodigoContrato"]) ? filter_var($_POST["CodigoContrato"], FILTER_SANITIZE_STRING):"";
@@ -12,17 +13,20 @@ if($_POST){
 
         $prepara = verificaPrepara($numeroContrato);
 
+
         if($prepara){
             $marcado = false;
             
             foreach($HoraPresenca as $hora){
-                $marcado = marcar($numeroContrato, $hora);
+                $marcado = marcar($numeroContrato, $hora, $prepara["NomeAluno"]);
             }
            
             if($marcado){
-                $_SESSION["sucesso"] =  "<p class='alert alert-success'> A presença foi confirmada com sucesso. </p>";
+                $_SESSION["sucesso"] =  "<p class='alert alert-success'> A presença foi confirmada com sucesso. Minimize a janela e acesse o sistema. Boa aula! </p>";
+                return header("location:/presenca");
             }else{
                 $_SESSION["confirmada"] = "<p class='alert alert-primary'> A sua presença já foi confirmada. Obrigado e boa aula! </p>";
+                return header("location:/presenca");
             }
 
         }else{
@@ -34,24 +38,29 @@ if($_POST){
                 $marcado = false;
 
                 foreach($HoraPresenca as $hora){
-                    $marcado = marcar($numeroContrato, $hora);
+                    $marcado = marcar($numeroContrato, $hora, $ouro["NOME"]);
                 }
 
                 if($marcado){
-                    $_SESSION["sucesso"] =  "<p class='alert alert-success'> A presença foi confirmada com sucesso. </p>";
+                    $_SESSION["sucesso"] =  "<p class='alert alert-success'> A presença foi confirmada com sucesso. <a target='_blank' href='/'>Clique aqui.</a></p>";
+                    return header("Location:/presenca");
                 }else{
-                    $_SESSION["confirmada"] = "<p class='alert alert-primary'> A sua presença já foi confirmada. Obrigado e boa aula! </p>";
+                    $_SESSION["confirmada"] = "<p class='alert alert-primary'> A sua presença já foi confirmada. Obrigado e boa aula! <a target='_blank' href='/'>Clique aqui.</a></p></p>";
+                    return header("Location:/presenca");
                 }
             }else{
                 $_SESSION["naoencontrado"] = "<p class='alert alert-danger'> Usuário não encontrado. Clique no botão de voltar e tente novamente. </p>";
+                return header("Location:/presenca");
             }
         }
     }else{
         $_SESSION["vazio"] = "<p class='alert alert-danger'>Clique em voltar, digite um usuário válido e marque os horários da sua aula.</p>";
+        return header("Location:/presenca");
     }
-
+    
 }else{
-    $_SESSION["vazio"] = "<p class='alert alert-danger'>Clique em voltar, digite um usuário válido e marque os horários da sua aula.</p>";
+    $_SESSION["vazio"] = "<p class='alert alert-danger'>Digite um usuário válido e marque os horários da sua aula.</p>";
+    return header("Location:/presenca");
 }
 ?>
 
@@ -87,12 +96,13 @@ if($_POST){
             }
         ?>
     </div>
-        <button class="btn btn-danger" onclick="backToSite()">Voltar</button>
+       
     </div>
         <script>
             function backToSite(){
                return window.location.href = '/presenca';
             }
+            
         </script>
 </body>
 </html>
