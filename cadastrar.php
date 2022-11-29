@@ -42,14 +42,14 @@ if($_POST){
                 }
 
                 if($marcado){
-                    $_SESSION["sucesso"] =  "<p class='alert alert-success'> A presença foi confirmada com sucesso. <a target='_blank' href='/'>Clique aqui.</a></p>";
+                    $_SESSION["sucesso"] =  "<p class='alert alert-success'> A presença foi confirmada com sucesso. Boa aula!</p>";
                     return header("Location:/presenca");
                 }else{
-                    $_SESSION["confirmada"] = "<p class='alert alert-primary'> A sua presença já foi confirmada. Obrigado e boa aula! <a target='_blank' href='/'>Clique aqui.</a></p></p>";
+                    $_SESSION["confirmada"] = "<p class='alert alert-primary'> A sua presença já foi confirmada. Obrigado e boa aula!</p>";
                     return header("Location:/presenca");
                 }
             }else{
-                $_SESSION["naoencontrado"] = "<p class='alert alert-danger'> Usuário não encontrado. Clique no botão de voltar e tente novamente. </p>";
+                $_SESSION["naoencontrado"] = "<p class='alert alert-danger'> Usuário não encontrado. Tente novamente. </p>";
                 return header("Location:/presenca");
             }
         }

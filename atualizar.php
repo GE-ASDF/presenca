@@ -23,7 +23,7 @@ include_once "conectar.php";
 
     try{
 
-        $sql = "SELECT * FROM presencas ORDER BY DataPresenca DESC";
+        $sql = "SELECT * FROM presencas ORDER BY DataPresenca DESC, HoraPresenca DESC";
         $conectar = conectar("servidorouro", "bd_presencas", "prepara2", "prepara");
         $query = $conectar->query($sql);
         $presencas = $query->fetchAll();
