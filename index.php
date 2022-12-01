@@ -7,18 +7,22 @@
         <?php 
              if(isset($_SESSION["sucesso"])){
                 echo $_SESSION["sucesso"];
+                header("Refresh: 7;url=index.php");
                 unset($_SESSION["sucesso"]);
             }
             if(isset($_SESSION["naoencontrado"])){
                 echo $_SESSION["naoencontrado"];
+                header("Refresh: 7;url=index.php");
                 unset($_SESSION["naoencontrado"]);
             }
             if(isset($_SESSION["confirmada"])){
                 echo $_SESSION["confirmada"];
+                header("Refresh: 7;url=index.php");
                 unset($_SESSION["confirmada"]);
             }
             if(isset($_SESSION["vazio"])){
                 echo $_SESSION["vazio"];
+                header("Refresh: 7;url=index.php");
                 unset($_SESSION["vazio"]);
             }
         ?>
@@ -101,8 +105,8 @@
             </label>
         </div>
         <div class="data-hora m-1">
-            <input class="form-control" type="text" readonly name="DataPresenca">
-            <input class="form-control" type="text" readonly name="DiaSemana">
+            <input class="form-control" type="text"  name="DataPresenca">
+            <input class="form-control" type="text"  name="DiaSemana">
             <input class="form-control" type="hidden" value="<?php echo $_SERVER["REMOTE_ADDR"] ?>" readonly name="IpComputador">
         </div>
 

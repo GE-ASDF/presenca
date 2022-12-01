@@ -63,7 +63,7 @@ include_once "conectar.php";
       <td><?php echo $presenca["DataPresenca"] ?></td>
       <td><?php echo $presenca["DiaSemana"] ?></td>
       <td><?php echo $presenca["HoraPresenca"] ?></td>
-      <td><a class="btn btn-primary" style="background:#600080;" href="editar.php?Codigo=<?php echo $presenca["Codigo"] ?>">Editar</a></td>
+      <td><a class="btn btn-primary" style="background:#600080;" href="editar.php?Codigo=<?php echo $presenca["Codigo"] ?>&pg=atualizar">Editar</a></td>
     <form class="apagar" action="delete.php" method="GET">
         <td>
             <input type="hidden" value="<?php echo $presenca["Codigo"] ?>" name="Codigo">

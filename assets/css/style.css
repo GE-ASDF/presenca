@@ -43,3 +43,9 @@ h1{
 .data-hora input{
     margin:1px;
 }
+.green{
+    background-color: green;
+}
+.red{
+    background-color: red;
+}

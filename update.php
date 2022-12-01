@@ -7,7 +7,7 @@
         return header("Location:/presenca/atualizar.php");
     }
 if($_POST){
-
+    $pg = isset($_GET['pg']) ? $_GET["pg"]:header("Location:/presenca/atualizar.php");
     $Codigo = isset($_POST["Codigo"]) ? $_POST["Codigo"]:"";
     $NomeAluno = isset($_POST["NomeAluno"]) ? filter_var($_POST["NomeAluno"], FILTER_SANITIZE_STRING):"";
     $DataPresenca = isset($_POST["DataPresenca"]) ? filter_var($_POST["DataPresenca"], FILTER_SANITIZE_STRING):"";
@@ -29,12 +29,12 @@ if($_POST){
 
     if($atualizado){
         $_SESSION["message"] = "Registro atualizado com sucesso.";
-        return header("Location:/presenca/atualizar.php");
+        return header("Location:/presenca/".$pg.".php");
     }else{
         $_SESSION["message"] = "O registro não foi atualizado. Tente novamente.";
-        return header("Location:/presenca/atualizar.php");
+        return header("Location:/presenca/".$pg.".php");
     }
 }else{
     $_SESSION["message"] = "Não foi possível acessar a página.";
-    return header("Location:/presenca/atualizar.php");
+    return header("Location:/presenca/".$pg.".php");
 }

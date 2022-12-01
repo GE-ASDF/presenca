@@ -22,7 +22,7 @@ include "partials/cabecalho.php";
 
 include_once "conectar.php";
 if($_GET){
-
+    $pg = isset($_GET['pg']) ? $_GET["pg"]:header("Location:/presenca/atualizar.php");
     $Codigo = isset($_GET["Codigo"]) ? $_GET["Codigo"]:header("Location: /presenca/atualizar.php");
 
     if($Codigo){
@@ -51,7 +51,7 @@ if($_GET){
     <?php include "partials/cabecalho.php" ?>
     <div class="container">
 
-    <form accept-charset="utf-8" action="update.php" method="POST">
+    <form accept-charset="utf-8" action="update.php?pg=<?php echo $pg ?>" method="POST">
             <h1 class="title text-white">Atualizar presença</h1>
 
         <label class="form-label text-white" for="NomeAluno">Nome do aluno:</label>
@@ -69,6 +69,7 @@ if($_GET){
             <input class="form-control" type="text" value="<?php echo $presenca["HoraPresenca"] ?>" placeholder="Hora da presença" name="HoraPresenca">
             <input class="form-control" type="text" value="<?php echo $presenca["DiaSemana"] ?>" placeholder="Dia da semana" name="DiaSemana">
             <input class="form-control" type="hidden" value="<?php echo $presenca["IpComputador"] ?>" placeholder="IP do computador" name="IpComputador">
+            <input class="form-control" type="hidden" value="<?php echo $pg ?>" placeholder="IP do computador" name="pg">
         </div>
 
         <div class="dia-semana m-1">

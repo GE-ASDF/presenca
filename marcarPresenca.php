@@ -9,7 +9,6 @@ function marcar($numeroContrato, $HoraPresenca, $NomeAluno = ''){
 
     $sql = "INSERT INTO presencas(CodigoContrato, NomeAluno, DataPresenca, HoraPresenca, DiaSemana,
     Computador, IpComputador) VALUES(:CodigoContrato,:NomeAluno, :DataPresenca, :HoraPresenca, :DiaSemana, :Computador, :IpComputador)";
-
     $CodigoContrato = $numeroContrato;
     $DataPresenca = isset($_POST["DataPresenca"]) ? filter_var($_POST["DataPresenca"], FILTER_SANITIZE_STRING):"";
     $DiaSemana = isset($_POST["DiaSemana"]) ? filter_var($_POST["DiaSemana"], FILTER_SANITIZE_STRING):"";
@@ -25,7 +24,7 @@ function marcar($numeroContrato, $HoraPresenca, $NomeAluno = ''){
         'Computador' => $computador,
         'IpComputador' => $ipComputador
     ];
-   
+    
         $presencaMarcada = jaMarcada([
             "CodigoContrato" => $data["CodigoContrato"],
             "DataPresenca" => $data["DataPresenca"],

@@ -9,6 +9,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="/presenca/atualizar.php">Página inicial</a>
+      <a class="nav-item nav-link active" href="/presenca/grade.php">Grade</a>
       <a class="nav-item nav-link" href="destroy.php">Sair</a>
     </div>
   </div>

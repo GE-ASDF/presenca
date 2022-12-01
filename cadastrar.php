@@ -20,7 +20,6 @@ if($_POST){
             foreach($HoraPresenca as $hora){
                 $marcado = marcar($numeroContrato, $hora, $prepara["NomeAluno"]);
             }
-           
             if($marcado){
                 $_SESSION["sucesso"] =  "<p class='alert alert-success'> A presença foi confirmada com sucesso. Minimize a janela e acesse o sistema. Boa aula! </p>";
                 return header("location:/presenca");
