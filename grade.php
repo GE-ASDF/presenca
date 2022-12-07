@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once "conectar.php";
+$title = "Grade de presenças";
 $limite = 15;
 
     include "partials/cabecalho.php"; ?>
@@ -35,8 +36,40 @@ $limite = 15;
 
  ?>
 
-    <main>
-       
+        <main>
+        <div class="alertas">
+        <?php 
+             if(isset($_SESSION["sucesso"])){
+                echo $_SESSION["sucesso"];
+                header("Refresh: 7;url=index.php");
+                unset($_SESSION["sucesso"]);
+            }
+            if(isset($_SESSION["naoencontrado"])){
+                echo $_SESSION["naoencontrado"];
+                header("Refresh: 7;url=index.php");
+                unset($_SESSION["naoencontrado"]);
+            }
+            if(isset($_SESSION["confirmada"])){
+                echo $_SESSION["confirmada"];
+                header("Refresh: 7;url=index.php");
+                unset($_SESSION["confirmada"]);
+            }
+            if(isset($_SESSION["vazio"])){
+                echo $_SESSION["vazio"];
+                header("Refresh: 7;url=index.php");
+                unset($_SESSION["vazio"]);
+            }
+        ?>
+    </div>
+            <?php
+                if(isset($_SESSION["message"])){
+                    $message = $_SESSION["message"];
+                    unset($_SESSION["message"]);
+                }
+            ?>
+            <?php echo $message ? "<span class='alert alert-primary'>
+                {$message} </span>": "" ?>
+            
             <h1 class="title text-white mt-2 p-2" style="text-align:left;">Grade de horários</h1>
             <label class="title text-white">Pesquisar: </label> <input placeholder="Pesquise por: data, dia da semana, total de presenças" autofocus type="text" id="txtBusca" class="form-control">
             <table class="table table-dark">
@@ -70,18 +103,18 @@ $limite = 15;
             <tr class="linha">
                 <td><?php echo $g["DataPresenca"] ?></td>
                 <td><?php echo $g["DiaSemana"] ?></td>
-                <td style="text-align:center;border:1px solid #fff;background:<?php echo $g["08:00"] >= $limite ? "red":"#556B2F" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=08:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["08:00"]; ?></a></td>
-                <td style="text-align:center;border:1px solid #fff;background:<?php echo $g["09:00"] >= $limite ? "red":"#556B2F" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=09:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["09:00"]; ?></a></td>
-                <td style="text-align:center;border:1px solid #fff;background:<?php echo $g["10:00"] >= $limite ? "red":"#556B2F" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=10:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["10:00"]; ?></a></td>
-                <td style="text-align:center;border:1px solid #fff;background:<?php echo $g["11:00"] >= $limite ? "red":"#556B2F" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=11:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["11:00"]; ?></a></td>
-                <td style="text-align:center;border:1px solid #fff;background:<?php echo $g["12:00"] >= $limite ? "red":"#556B2F" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=12:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["12:00"]; ?></a></td>
-                <td style="text-align:center;border:1px solid #fff;background:<?php echo $g["13:00"] >= $limite ? "red":"#556B2F" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=13:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["13:00"]; ?></a></td>
-                <td style="text-align:center;border:1px solid #fff;background:<?php echo $g["14:00"] >= $limite ? "red":"#556B2F" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=14:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["14:00"]; ?></a></td>
-                <td style="text-align:center;border:1px solid #fff;background:<?php echo $g["15:00"] >= $limite ? "red":"#556B2F" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=15:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["15:00"]; ?></a></td>
-                <td style="text-align:center;border:1px solid #fff;background:<?php echo $g["16:00"] >= $limite ? "red":"#556B2F" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=16:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["16:00"]; ?></a></td>
-                <td style="text-align:center;border:1px solid #fff;background:<?php echo $g["17:00"] >= $limite ? "red":"#556B2F" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=17:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["17:00"]; ?></a></td>
-                <td style="text-align:center;border:1px solid #fff;background:<?php echo $g["18:00"] >= $limite ? "red":"#556B2F" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=18:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["18:00"]; ?></a></td>
-                <td style="text-align:center;border:1px solid #fff;background:<?php echo $g["19:00"] >= $limite ? "red":"#556B2F" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=19:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["19:00"]; ?></a></td>
+                <td style="text-align:center;border:1px solid #fff" class="<?php echo $g["08:00"] >= $limite ? "bg-danger":"bg-success" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=08:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["08:00"]; ?></a></td>
+                <td style="text-align:center;border:1px solid #fff" class="<?php echo $g["09:00"] >= $limite ? "bg-danger":"bg-success" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=09:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["09:00"]; ?></a></td>
+                <td style="text-align:center;border:1px solid #fff" class="<?php echo $g["10:00"] >= $limite ? "bg-danger":"bg-success" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=10:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["10:00"]; ?></a></td>
+                <td style="text-align:center;border:1px solid #fff" class="<?php echo $g["11:00"] >= $limite ? "bg-danger":"bg-success" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=11:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["11:00"]; ?></a></td>
+                <td style="text-align:center;border:1px solid #fff" class="<?php echo $g["12:00"] >= $limite ? "bg-danger":"bg-success" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=12:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["12:00"]; ?></a></td>
+                <td style="text-align:center;border:1px solid #fff" class="<?php echo $g["13:00"] >= $limite ? "bg-danger":"bg-success" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=13:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["13:00"]; ?></a></td>
+                <td style="text-align:center;border:1px solid #fff" class="<?php echo $g["14:00"] >= $limite ? "bg-danger":"bg-success" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=14:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["14:00"]; ?></a></td>
+                <td style="text-align:center;border:1px solid #fff" class="<?php echo $g["15:00"] >= $limite ? "bg-danger":"bg-success" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=15:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["15:00"]; ?></a></td>
+                <td style="text-align:center;border:1px solid #fff" class="<?php echo $g["16:00"] >= $limite ? "bg-danger":"bg-success" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=16:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["16:00"]; ?></a></td>
+                <td style="text-align:center;border:1px solid #fff" class="<?php echo $g["17:00"] >= $limite ? "bg-danger":"bg-success" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=17:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["17:00"]; ?></a></td>
+                <td style="text-align:center;border:1px solid #fff" class="<?php echo $g["18:00"] >= $limite ? "bg-danger":"bg-success" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=18:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["18:00"]; ?></a></td>
+                <td style="text-align:center;border:1px solid #fff" class="<?php echo $g["19:00"] >= $limite ? "bg-danger":"bg-success" ?>"><a class="nav-link" href="horario.php?DataPresenca=<?php echo $g['DataPresenca']?>&HoraPresenca=19:00&DiaSemana=<?php echo $g['DiaSemana'] ?>" ><?php echo $g["19:00"]; ?></a></td>
                 <td style="text-align:center;font-weight:bold" class="totalGeral"></td>
             </tr>
        

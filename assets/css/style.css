@@ -49,3 +49,16 @@ h1{
 .red{
     background-color: red;
 }
+.text-content{
+    position: relative;
+}
+.text-content::before{
+    content:"";
+    display: block;
+    background-color: #dfea0d;
+    width:10px;
+    top:15px;
+    left:-12px;
+    height: 5px;
+    position: absolute;
+}

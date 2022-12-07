@@ -14,7 +14,6 @@ include "partials/cabecalho.php" ?>
     <div class="form-group">
     <label class="text-white" for="usuario">Usuário</label>
     <input name="usuario" type="text" class="form-control" id="usuario" aria-describedby="emailHelp" placeholder="Digite seu usuário(sem a letra)">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 </div>
 <div class="form-group">
     <label class="text-white"  for="senha">Senha</label>

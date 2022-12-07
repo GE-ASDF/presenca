@@ -21,7 +21,6 @@ function verificaPrepara($CodigoContrato){
     }else{
         return false;
     }
-    return false;
 }
 
 
@@ -42,7 +41,5 @@ function verificaOuro($CodigoContrato){
     }else{
         return false;
     }
-
-    return false;
 
 }

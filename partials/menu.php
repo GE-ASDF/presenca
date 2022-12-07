@@ -8,8 +8,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/presenca/atualizar.php">Página inicial</a>
-      <a class="nav-item nav-link active" href="/presenca/grade.php">Grade</a>
+      <a class="nav-item nav-link active" href="/presenca/atualizar.php">Página inicial(Grade flex)</a>
+      <a class="nav-item nav-link active" href="/presenca/grade.php">Grade de presenças</a>
+      <a class="nav-item nav-link active" href="/presenca/index.php?pg=grade">Presença</a>
+      <a class="nav-item nav-link active" href="/presenca/apostilas.php">Cadastrar apostilas</a>
       <a class="nav-item nav-link" href="destroy.php">Sair</a>
     </div>
   </div>

@@ -1,47 +1,68 @@
 <?php
     session_start();
     $title = "Dê a sua presença";
- include "partials/cabecalho.php" ?>
+    $pg = isset($_GET["pg"]) ? filter_var($_GET['pg'], FILTER_SANITIZE_STRING):"";
+?>
+    
+<?php include "partials/cabecalho.php" ?>
+
  <div class="container-fluid">
+ <?php 
+    if($pg === 'grade'){
+        include "partials/menu.php";
+}
+?>
  <div class="alertas">
         <?php 
              if(isset($_SESSION["sucesso"])){
                 echo $_SESSION["sucesso"];
-                header("Refresh: 7;url=index.php");
                 unset($_SESSION["sucesso"]);
             }
             if(isset($_SESSION["naoencontrado"])){
                 echo $_SESSION["naoencontrado"];
-                header("Refresh: 7;url=index.php");
                 unset($_SESSION["naoencontrado"]);
             }
             if(isset($_SESSION["confirmada"])){
                 echo $_SESSION["confirmada"];
-                header("Refresh: 7;url=index.php");
                 unset($_SESSION["confirmada"]);
             }
             if(isset($_SESSION["vazio"])){
                 echo $_SESSION["vazio"];
-                header("Refresh: 7;url=index.php");
                 unset($_SESSION["vazio"]);
             }
         ?>
+        <div class="mensagem">
+
+        </div>
     </div>
        
 </div>
     <div class="container">    
-
-    <form accept-charset="utf-8" action="cadastrar.php" method="POST">
+       
+    <form class="rounded" accept-charset="utf-8" id="frequency-form">
             <h1 class="title text-white">Confirme a sua presença</h1>
         <div class="contrato">
             <label class="form-label" for="CodigoContrato">
                 Usuário:</label>
-            <input autofocus type="text" class="form-control" name="CodigoContrato">
+            <input id="CodigoContrato" placeholder="Ex.: 423312, juninhok" autofocus type="text" class="form-control" name="CodigoContrato">
         </div>
-        <h5 class="mt-2 title text-white">Marque seus horários:</h5>
-        <span class="text-white">Ex: se você fica de 08h às 10h, marque os horários de 08h às 09h e 09h às 10h.</span>
-        <br>
-        <span class="text-white">Ex: se você fica de 08h às 09h, marque somente o horário de 08h.</span>
+        <small class="text-white">O usuário é o 'papelzinho' que você recebeu no primeiro dia de aula.</small>
+        <h5 class="mt-2 title text-white text-center">Marque seus horários</h5>
+        <div class="card bg-dark">
+            <div class="card-header">
+                <h2 class="fs-5 text-white">INSTRUÇÕES:</h2>
+            </div>
+            <div class="card-body">
+                <div class="text-content d-flex flex-column">
+                    <span class="text-white">Se você tem 2h(duas horas) de aula, então você marcará dois horários.</span>
+                    <span class="text-white">Ex: se você fica de 08h às 10h, marque os horários de <strong>08h às 09h e 09h às 10h</strong>.</span>
+                </div>
+                <div class="text-content d-flex flex-column">
+                    <span class="text-white">Se você tem 1h(uma hora) de aula, então você marcará apenas um horário.</span>
+                    <span class="text-white">Ex: se você fica de 08h às 09h, marque o horário de <strong>08h às 09h</strong>.</span>
+                </div>
+            </div>
+        </div>
         <div style="display:grid;grid-template-columns:repeat(4, 1fr);justify-content:center;align-items:center;text-align:center;margin-bottom:10px;margin-top:10px;">
         
             <label for="oito" class="form-check-label text-white fs-5">
@@ -105,15 +126,15 @@
             </label>
         </div>
         <div class="data-hora m-1">
-            <input class="form-control" type="text"  name="DataPresenca">
-            <input class="form-control" type="text"  name="DiaSemana">
+            <input readonly class="form-control" type="hidden"  name="DataPresenca">
+            <input readonly class="form-control" type="hidden"  name="DiaSemana">
             <input class="form-control" type="hidden" value="<?php echo $_SERVER["REMOTE_ADDR"] ?>" readonly name="IpComputador">
         </div>
 
         <div class="dia-semana m-1">
         </div>
         <div class="computador m-1">
-            <input value="<?php echo gethostbyaddr($_SERVER['REMOTE_ADDR']) ?>" class="form-control" type="text" readonly name="Computador">
+            <input value="<?php echo gethostbyaddr($_SERVER['REMOTE_ADDR']) ?>" class="form-control" type="hidden" readonly name="Computador">
         </div>
         <button class="btn btn-dark m-1">Registrar</button>
     </form>

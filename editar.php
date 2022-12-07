@@ -68,8 +68,8 @@ if($_GET){
             <input class="form-control" type="text" value="<?php echo $presenca["DataPresenca"] ?>" placeholder="Data da presença" name="DataPresenca">
             <input class="form-control" type="text" value="<?php echo $presenca["HoraPresenca"] ?>" placeholder="Hora da presença" name="HoraPresenca">
             <input class="form-control" type="text" value="<?php echo $presenca["DiaSemana"] ?>" placeholder="Dia da semana" name="DiaSemana">
-            <input class="form-control" type="hidden" value="<?php echo $presenca["IpComputador"] ?>" placeholder="IP do computador" name="IpComputador">
-            <input class="form-control" type="hidden" value="<?php echo $pg ?>" placeholder="IP do computador" name="pg">
+            <input class="form-control" type="text" value="<?php echo $presenca["IpComputador"] ?>" placeholder="IP do computador" name="IpComputador">
+            <input class="form-control" type="hidden" value="<?php echo $pg ?>" name="pg">
         </div>
 
         <div class="dia-semana m-1">

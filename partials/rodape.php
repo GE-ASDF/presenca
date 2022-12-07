@@ -1,4 +1,6 @@
 <script src="./assets/js/main.js"></script>
+<script src="./assets/js/xhttp.js"></script>
+<script src="./assets/js/presenca.js"></script>
     <script>
         const form = document.querySelector("form")
                 
